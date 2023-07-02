@@ -39,7 +39,7 @@ func simulateAlienInvasion(world WorldMap, numAliens int) {
 	fmt.Println("\n********************Simulation Completed:********************")
 }
 
-// readWorldMap reads the world map file and populates the WorldMap data structure
+// ReadWorldMap reads the world map file and populates the WorldMap data structure
 func readWorldMap(filename string) (WorldMap, error) {
 	file, err := os.Open(filename)
 	if err != nil {
