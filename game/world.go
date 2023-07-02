@@ -47,7 +47,7 @@ func (cities WorldMap) getRandomCityWithLimit(alienCount map[*City]int) *City {
 }
 
 // createAliens creates the specified number of aliens and assigns them random starting cities
-func (cities WorldMap) createAliens(numAliens int) []*Alien {
+func (cities WorldMap) CreateAliens(numAliens int) []*Alien {
 	aliens := make([]*Alien, numAliens)
 	alienCount := make(map[*City]int) // Track the number of aliens in each city
 
@@ -75,7 +75,7 @@ func (cities WorldMap) createAliens(numAliens int) []*Alien {
 }
 
 // simulateAlienMovement simulates aliens moving randomly around the cities
-func (world WorldMap) simulateAlienMovement(aliens []*Alien) {
+func (world WorldMap) SimulateAlienMovement(aliens []*Alien) {
 	for _, alien := range aliens {
 		if !alien.Active {
 			// Skip inactive aliens
@@ -178,7 +178,7 @@ func oppositeDirection(dir string) string {
 }
 
 // printWorldMap prints the current state of the world map
-func (world WorldMap) printWorldMap() {
+func (world WorldMap) PrintWorldMap() {
 	for _, city := range world {
 		directions := make([]string, 0, len(city.Neighs))
 		for dir := range city.Neighs {
