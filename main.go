@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/Mshahidtaj/alien-invasion/game"
 )
 
 func main() {
@@ -15,16 +17,16 @@ func main() {
 		return
 	}
 
-	fmt.Println("World Map before Alien Invasion: ", world.totalCitiesInWorld())
-	world.printWorldMap()
+	fmt.Println("World Map before Alien Invasion: ", world.TotalCitiesInWorld())
+	world.PrintWorldMap()
 
 	numAliens := 10
 	simulateAlienInvasion(world, numAliens)
 }
 
-func simulateAlienInvasion(world WorldMap, numAliens int) {
+func simulateAlienInvasion(world game.WorldMap, numAliens int) {
 	fmt.Println("\nHang on Alien Inavsion about to start:")
-	aliens := world.createAliens(numAliens)
+	aliens := world.CreateAliens(numAliens)
 
 	fmt.Println("\nInitial Alien Mapping:")
 	for _, alien := range aliens {
@@ -32,22 +34,22 @@ func simulateAlienInvasion(world WorldMap, numAliens int) {
 	}
 
 	// Simulate alien movement, lets run 2 simulation
-	world.simulateAlienMovement(aliens)
+	world.SimulateAlienMovement(aliens)
 
 	fmt.Println("\nRemaining World Map1:")
-	world.printWorldMap()
+	world.PrintWorldMap()
 	fmt.Println("\n********************Simulation Completed:********************")
 }
 
 // ReadWorldMap reads the world map file and populates the WorldMap data structure
-func readWorldMap(filename string) (WorldMap, error) {
+func readWorldMap(filename string) (game.WorldMap, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
 	}
 	defer file.Close()
 
-	worldMap := make(WorldMap)
+	worldMap := make(game.WorldMap)
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
@@ -57,9 +59,9 @@ func readWorldMap(filename string) (WorldMap, error) {
 		cityName := parts[0]
 		directions := parts[1:]
 
-		city := &City{
+		city := &game.City{
 			Name:   cityName,
-			Neighs: make(map[string]*City),
+			Neighs: make(map[string]*game.City),
 		}
 
 		// directions​ ​are​ ​separated​ ​from​ ​their​ ​respective​ ​cities​ ​with​ ​an​ ​equals​ ​(=)​ ​sign.
@@ -70,15 +72,15 @@ func readWorldMap(filename string) (WorldMap, error) {
 
 			neighCity := worldMap[neighName]
 			if neighCity == nil {
-				neighCity = &City{
+				neighCity = &game.City{
 					Name:   neighName,
-					Neighs: make(map[string]*City),
+					Neighs: make(map[string]*game.City),
 				}
 				worldMap[neighName] = neighCity
 			}
 
 			city.Neighs[dirName] = neighCity
-			neighCity.Neighs[oppositeDirection(dirName)] = city
+			neighCity.Neighs[game.OppositeDirection(dirName)] = city
 		}
 
 		worldMap[cityName] = city

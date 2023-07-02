@@ -16,7 +16,7 @@ func TestCreateAliens(t *testing.T) {
 	}
 
 	numAliens := 5
-	aliens := cities.createAliens(numAliens)
+	aliens := cities.CreateAliens(numAliens)
 
 	if len(aliens) != numAliens {
 		t.Errorf("Expected %d aliens, but got %d", numAliens, len(aliens))
@@ -48,7 +48,7 @@ func TestSimulateAlienMovement(t *testing.T) {
 
 	aliens := []*Alien{alien1, alien2}
 
-	cities.simulateAlienMovement(aliens)
+	cities.SimulateAlienMovement(aliens)
 
 	if (alien1.City != city1 && alien1.City != city2 && alien1.City != city3) ||
 		(alien2.City != city1 && alien2.City != city2 && alien2.City != city3) {
@@ -137,27 +137,27 @@ func TestRemoveAlienFromSlice(t *testing.T) {
 }
 
 func TestOppositeDirection(t *testing.T) {
-	direction := oppositeDirection("north")
+	direction := OppositeDirection("north")
 	if direction != "south" {
 		t.Errorf("Expected direction 'south', but got %s", direction)
 	}
 
-	direction = oppositeDirection("south")
+	direction = OppositeDirection("south")
 	if direction != "north" {
 		t.Errorf("Expected direction 'north', but got %s", direction)
 	}
 
-	direction = oppositeDirection("east")
+	direction = OppositeDirection("east")
 	if direction != "west" {
 		t.Errorf("Expected direction 'west', but got %s", direction)
 	}
 
-	direction = oppositeDirection("west")
+	direction = OppositeDirection("west")
 	if direction != "east" {
 		t.Errorf("Expected direction 'east', but got %s", direction)
 	}
 
-	direction = oppositeDirection("invalid")
+	direction = OppositeDirection("invalid")
 	if direction != "" {
 		t.Errorf("Expected empty direction, but got %s", direction)
 	}
@@ -174,7 +174,7 @@ func TestTotalCitiesInWorld(t *testing.T) {
 		"City3": city3,
 	}
 
-	totalCities := worldMap.totalCitiesInWorld()
+	totalCities := worldMap.TotalCitiesInWorld()
 
 	if totalCities != 3 {
 		t.Errorf("Expected total cities 3, but got %d", totalCities)
