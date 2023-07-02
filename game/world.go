@@ -161,8 +161,8 @@ func removeAlienFromSlice(slice []*Alien, alien *Alien) []*Alien {
 	return slice
 }
 
-// oppositeDirection returns the opposite direction given a direction
-func oppositeDirection(dir string) string {
+// OppositeDirection returns the opposite direction given a direction
+func OppositeDirection(dir string) string {
 	switch dir {
 	case "north":
 		return "south"
@@ -188,6 +188,7 @@ func (world WorldMap) PrintWorldMap() {
 	}
 }
 
-func (cities WorldMap) totalCitiesInWorld() int {
+// TotalCitiesInWorld returns the total number of cities from worldmap
+func (cities WorldMap) TotalCitiesInWorld() int {
 	return (len(cities))
 }
