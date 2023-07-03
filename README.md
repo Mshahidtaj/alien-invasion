@@ -7,6 +7,7 @@
 * [Assumptions](#assumptions)
 * [Sample Run](#sample-run)
 * [Project Structure](#project-structure)
+* [Improvements](#improvement)
 ### Overview: 
  To design & implement Mad aliens invastion to the imaginary world.
 
@@ -56,6 +57,10 @@ Understanding these data structures is crucial as they form the foundation for t
 ```bash
     make build
     make run worldmap=map.txt n=5
+```
+### Run the unit tests
+```
+    make test
 ```
  Makefile, also comes with additional option, like cleanup, running the Tests, docker image etc, as shown in the image below
 
@@ -110,3 +115,8 @@ This project simply consist of two packages i.e
 2. Game package: The game package contains the world.go and world_test.go files, which implement the game logic. This includes managing cities, alien movement, and conflict resolution. The game package focuses on the core functionality of the Alien Invasion game. It may also include other supporting files specific to the game's mechanics and rules.
 
 <img src="images/folder-structure.png" />
+
+### Improvements
+1. Add some more unit tests
+2. Enhance looging
+3. Github action workflow for docker build, push & run tests
