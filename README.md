@@ -118,5 +118,5 @@ This project simply consist of two packages i.e
 
 ### Improvements
 1. Add some more unit tests
-2. Enhance looging
+2. Enhance logging
 3. Github action workflow for docker build, push & run tests
