@@ -6,23 +6,21 @@
 * [Build & Run](#build-run)
 * [Assumptions](#assumptions)
 * [Sample Run](#sample-run)
-
+* [Project Structure](#project-structure)
 ### Overview: 
  To design & implement Mad aliens invastion to the imaginary world.
 
-### Design & Assumptions Summary
+### Design Summary
 1. Create a world map using the provided file.
 2. Create `N` number of aliens based on the input.
-3. Assumption: The number of aliens cannot exceed twice the number of cities in the world.
-4. Simulate the movement of aliens by 
+3. Simulate the movement of aliens by 
     - having them randomly choose a neighboring city to move to. 
     - If an alien encounters another alien in the new city, they engage in a fight that results in the destruction of the city.
     - When a city is destroyed, it is removed from the map, along with any roads leading to or from it.
-6. The program prints the movement of each alien and any encounters or city destructions that occur.
-7. After a certain number of iterations, the program stops, and the final state of the map is printed.
+4. The program prints the movement of each alien and any encounters or city destructions that occur.
+5. After a certain number of iterations, the program stops, and the final state of the map is printed.
 
 In summary, the design of the program involves creating a world map, generating aliens, and simulating their movement. The program handles alien encounters and city destructions, maintaining the state of the map throughout the simulation. The final result is displayed after a specified number of iterations.
-
 
 <img src="images/alien-invasion.png" />
 
@@ -36,7 +34,6 @@ I have started by splitting the requirements into smaller possible tasks, and my
 3. Simulating Alien Movement: I am now working on implementing the logic for simulating alien movement. This step involves defining how the aliens will move within the world map and updating their positions accordingly. Additionally, I am developing utility methods to support the simulation process on need bases.
 
 These steps will help us build the foundation of the application and make progress towards achieving the desired functionality.
-
 
 ### Data Structures
 Now, let's go through an overview of the "Data Structure" as understanding them is important since the entire logic revolves around them. The main data structures used in the application are:
@@ -60,12 +57,12 @@ Understanding these data structures is crucial as they form the foundation for t
     make build
     make run worldmap=map.txt n=5
 ```
- Makefile, also comes with additional option, like cleanup, running the Tests, docker image etc, as show in the image below
+ Makefile, also comes with additional option, like cleanup, running the Tests, docker image etc, as shown in the image below
 
 <img src="images/makefile.png" />
 
 ### Assumptions 
-1. Map is provided in the following format
+1. Map file is provided in the following format
 ```
     Foo north=Bar west=Baz south=Qu-ux
     Bar south=Foo west=Bee
@@ -104,3 +101,12 @@ Baz
 Qu-ux 
 Bee 
 ```
+
+### Project Structure
+This project simply consist of two packages i.e
+
+1. Main package: The main package is responsible for controlling the execution and setup of the Alien Invasion game. It includes the main.go file, which serves as the entry point for the program. This package may also contain other utility files that support the main functionality. Additionally, the main package includes unit tests to ensure the correctness of its components.
+
+2. Game package: The game package contains the world.go and world_test.go files, which implement the game logic. This includes managing cities, alien movement, and conflict resolution. The game package focuses on the core functionality of the Alien Invasion game. It may also include other supporting files specific to the game's mechanics and rules.
+
+<img src="images/folder-structure.png" />
